@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h2.page-title= product.name
+  i.product-category= product.category.name
+  if product.description
+    p.product-description= product.description
+  p.product-price $#{product.price}
+  if (product.number_in_stock > 0)
+    p.stock.in-stock In Stock
+  else
+    p.stock.out-of-stock Out of Stock 
