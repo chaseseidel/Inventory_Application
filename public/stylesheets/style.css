@@ -9,6 +9,7 @@
   --dark-blue-color: #1d3557;
   --blue-color: #457b9d;
   --light-blue-color: #a8dadc;
+  --green-color: #84e2a4;
 }
 
 body {
@@ -96,10 +97,30 @@ a {
 }
 
 .link a {
-  color: var(--black-color);
+  color: var(--dark-blue-color);
   font-size: 1.1rem;
 }
 
 .link a:hover {
-  border-bottom: 1px solid var(--black-color);
+  border-bottom: 1px solid var(--dark-blue-color);
+}
+
+.product-category {
+  font-style: italic;
+}
+
+.stock {
+  width: 75px;
+  padding: 5px 10px;
+  border: 2px solid var(--black-color);
+  border-radius: 20px;
+  text-align: center;
+}
+
+.in-stock {
+  background-color: var(--green-color);
+}
+
+.out-of-stock {
+  background-color: var(--red-color);
 }
