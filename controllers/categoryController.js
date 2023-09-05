@@ -62,11 +62,45 @@ exports.category_create_post = [
 ];
 
 exports.category_delete_get = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: Category delete GET");
+  const [category, allProductsInCategory] = await Promise.all([
+    Category.findById({ _id: req.params.id }).exec(),
+    Product.find({ category: req.params.id }, { name: 1 }).exec(),
+  ]);
+
+  if (category === null) {
+    res.redirect("/categories");
+  }
+
+  res.render("category_delete", {
+    title: "Category",
+    category: category,
+    category_products: allProductsInCategory,
+  });
 });
 
 exports.category_delete_post = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: Category delete POST");
+  const [category, allProductsInCategory] = await Promise.all([
+    Category.findById({ _id: req.params.id }).exec(),
+    Product.find({ category: req.params.id }, { name: 1 }).exec(),
+  ]);
+
+  if (allProductsInCategory.length > 0) {
+    res.render("category_delete", {
+      title: "Category",
+      category: category,
+      category_products: allProductsInCategory,
+    });
+    return;
+  } else {
+    await Category.findByIdAndRemove({ _id: req.params.id });
+    res.redirect("/categories");
+  }
+
+  res.render("category_delete", {
+    title: "Category",
+    category: category,
+    category_products: allProductsInCategory,
+  });
 });
 
 exports.category_update_get = asyncHandler(async (req, res, next) => {
