@@ -16,5 +16,12 @@ html
               a.side-link(href="/products") All products
             li
               a.side-link(href="/categories") All categories
+          ul.sidebar-links
+            li
+              a.add-link(href="/product/create")
+                button + Add Product
+            li
+              a.add-link(href="/category/create")
+                button + Add Category
         div.page-container
           block content
