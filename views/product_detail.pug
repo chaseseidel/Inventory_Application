@@ -9,4 +9,9 @@ block content
   if (product.number_in_stock > 0)
     p.stock.in-stock In Stock
   else
-    p.stock.out-of-stock Out of Stock 
+    p.stock.out-of-stock Out of Stock
+  ul.list
+    li.link
+      a(href=`${product.url}/update`) Update product
+    li.link
+      a(href=`${product.url}/delete`) Delete product
