@@ -2,6 +2,19 @@ doctype html
 html
   head
     title= title
+    link(rel='stylesheet', href='/stylesheets/reset.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
+    div#container
+      header
+        a(href="/")
+          h1.title Inventory Application
+      main
+        nav.sidebar-nav 
+          ul.sidebar-links
+            li
+              a.side-link(href="/products") All products
+            li
+              a.side-link(href="/categories") All categories
+        div.page-container
+          block content
