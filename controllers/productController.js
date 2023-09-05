@@ -66,11 +66,16 @@ exports.product_create_post = [
 ];
 
 exports.product_delete_get = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: Product delete GET");
+  const product = await Product.findById({ _id: req.params.id }).exec();
+  res.render("product_delete", {
+    title: product.name,
+    product: product,
+  });
 });
 
 exports.product_delete_post = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: Product delete POST");
+  await Product.findByIdAndRemove({ _id: req.params.id });
+  res.redirect("/products");
 });
 
 exports.product_update_get = asyncHandler(async (req, res, next) => {
