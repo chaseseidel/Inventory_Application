@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h2.page-title= title
+  form.product-form(action="", method="POST")
+    label.form-label(for="name") Name: 
+    input.form-input(type="text" id="name" name="name" placeholder="Enter a name" required="true" value=(undefined===category ? '' : category.name))
+    label.form-label(for="description") Description:
+    input.form-input(type="text" id="description" name="description" placeholder="Enter a description" required="true" value=(undefined===category ? '' : category.description))
+    button.submit-btn(type="submit") Submit
+  if errors
+    ul
+      for error in errors
+        li!= error.msg
