@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h2.page-title= category.name
+  p.category-description= category.description
+  h3 Explore these products:
+  ul.list
+    each product in product_list
+        li.link
+            a(href=product.url) #{product.name}
+    else
+        li.link There are no products in this category.
